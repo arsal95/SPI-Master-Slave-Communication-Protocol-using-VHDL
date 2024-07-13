@@ -8,13 +8,13 @@ SPI is a very common communication protocol used for two-way communication betwe
 
 | <img src="./Images/SPI Bus.JPG"> |
 |:--:| 
-| *SPI Bus* |
+| *Fig 1: SPI Bus* |
 
 To begin communication, the master configures the clock, the master then selects the slave device with a logic level 0 on the select line. During each SPI clock cycle, a full-duplex data transmission occurs. The master sends a bit on the MOSI line and the slave reads it, while the slave sends a bit on the MISO line and the master reads it. This sequence is maintained even when only one-directional data transfer is intended. Data is usually shifted out with the most significant bit first. On the clock edge, both master and slave shift out a bit and output it on the transmission line to the counterpart. On the next clock edge, at each receiver the bit is sampled from the transmission line and set as a new least-significant bit of the shift register. After the register bits have been shifted out and in, the master and slave have exchanged register values.
 
 | <img src="./Images/SPI Communication.JPG"> |
 |:--:| 
-| *SPI Communication* |
+| *Fig 2: SPI Communication* |
 
 ## Algorithm Description:
 First, we define all the necessary signals for master and slave. We are reducing the clock frequency by using a counter, which will generate new reference frequency which will go high of 3 clock period. We perform our operation based on this new reference frequency. Then the data sent from master will be received by slave after certain clock period.
@@ -26,11 +26,11 @@ The state diagram for Master and Slave is as shown below.
 
 | <img src="./Images/Master State Machine.JPG"> |
 |:--:| 
-| *SPI Master State Machine* |
+| *Fig 3: SPI Master State Machine* |
 
 | <img src="./Images/Slave State Machine.JPG"> |
 |:--:| 
-| *SPI Master State Machine* |
+| *Fig 4: SPI Master State Machine* |
 
 ## VHDL Code Explanation:
 
@@ -96,20 +96,37 @@ The signals ‘wr_buf, rd_buf’ in master and ‘sdi_buffer, sdo_buffer’ in s
 * Similarly, for slave transition to idle will take place when resetn = '0'. When done = ‘1’ and slcsq = ‘0’ the state machine will move to csstart and it will continue the all states for change in ‘slcsq’.
 * Since the process is reading the values of state, start, count, and wr_buf are essential to define it in the sensitivity list of process.
 
-
-
+## Simulation and Output Waveform
+The output waveform of the SPI Master/Slave protocol is shown in Fig 5.
 
 | <img src="./Simulation/Output Waveform.JPG"> |
 |:--:| 
-| *Output Waveform* |
+| *Fig 5: Output Waveform* |
+
+At the beginning, the reset is 1 and as ‘start’ signal will become ‘1’ indicating starting of new transmission and ‘done_master’ will go to ‘0’. Fig.5. At the same time the state of the master changes from ‘sidle’ to ‘sstart’.
+
+To perform transmission to slave ‘scsq’ chip select should be ‘0’. As soon as this happens on the next falling edge of ‘spi_clkp’, the synchronous clock will start ‘sclk’ and the data to be transferred will be sent to ‘mosi’ and for each bit transferred the counter will decrement and state of the state machines changes.
+
+Similarly in slave once the ‘slscq’ goes to ‘0’on the next rising edge of ‘bclk’, done_slave goes to ‘0’ and the transition of state starts ‘csstart’. And the data to be sent to the master will in ‘slsdo’.
+
+All the bits received by the Master and slave are left-shifted because MSB will be sent out first as shown in Fig 6.
+
+Once all the bits are received the ‘master_done’ and ‘slave_done’ signals go to ‘1’ and ‘scsq’ and ‘slcsq’ also go to ‘1’ indicating the end of the transmission and reception as shown in Fig 7. The state of the Master and Slave changes to ‘sidle’ and ‘idle’ respectively.
 
 
 | <img src="./Simulation/Beginning of Transmission.JPG"> |
 |:--:| 
-| *Beginning of Transmission.JPG* |
+| *Fig 6: Beginning of Transmission.JPG* |
 
 
 | <img src="./Simulation/End of Transmission.JPG"> |
 |:--:| 
-| *End of Transmission.JPG* |
+| *Fig 7: End of Transmission.JPG* |
 
+## Conclusion:
+We have implemented a logic in VHDL to send data using the SPI protocol. Both Master and Slave can send and receive data from one another.
+* On the start signal both Master and slave start sending out the data in serial form with MSB sent out first.
+* After bit-by-bit transmission of the data in synchronous with the clock, both master and slave will exchange data.
+* At the end of transmission, the data sent from the Master is received by the slave and vice-versa, which is verified in the output waveform Fig.5. The state of the master and slave change to idle and the done signal will go to high as shown in Fig 7, indicating transmission is completed.
+
+Thank you for visiting my account. :slightly_smiling_face: 
