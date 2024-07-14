@@ -89,7 +89,7 @@ The signals ‘wr_buf, rd_buf’ in master and ‘sdi_buffer, sdo_buffer’ in s
 * Similarly, in slave, if ‘resetn’ is equal to ‘0’ then all the sequential operations will take place.
 
 #### 3. Process to define state transition:’cmb_p’(for master) and ‘slcmb’(For slave)
-* State transition conditions are built in the combinational block of the state machine.Fig.1 and Fig.2.
+* State transition conditions are built in the combinational block of the state machine Fig 3 and Fig 4.
 * Default values for outputs and m_next_state or s_next_state are initialized so that unwanted latches are not synthesized in the hardware.
 * State transitions are implemented as CASE statements, where we define what should happen in that particular state as in a state machine.
 * Transition to sidle will take place when resetn = '0'. And, when start = ‘1’ the state machine will move to sstartx and it will continue the all states. This logic will make endless state transitions unless resetn = ‘0’ or done =’1’.
