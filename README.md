@@ -72,7 +72,7 @@ Architecture block is used to describe the organization of the design entity. Ar
 * A new datatype State_type defines the various states for the state machine i.e. ‘sidle, sstartx, sstart_lo, sclk_hi, sclk_lo, sstop_hi, sstop_lo’ for SPI master.
 * A new datatype State_type defines the various states for the state machine i.e ‘idle, csstart, starthi_s, starthi, startlo_s, startlo,clkhi_s, clkhi, clklo_s,clklo, leadout’ for SPI slave.
 
-The signals ‘wr_buf, rd_buf’ in master and ‘sdi_buffer, sdo_buffer’ in slave are used as buffer element for operation of data in state machine
+The signals ‘wr_buf, rd_buf’ in master and ‘sdi_buffer, sdo_buffer’ in slave are used as buffer elements for the operation of data in the state machine.
 
 ### Here architecture block consists of 3 processes:
 
