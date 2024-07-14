@@ -22,7 +22,7 @@ First, we define all the necessary signals for master and slave. We are reducing
 ### State Diagram
 The state diagrams for Master and Slave are given below.
 * The SPI protocol has been implemented by the finite state machine with total 7 number of states for master and 11 states for slave.
-* The state machine is synchronized with ‘sclk’ and triggered with input signals ‘resetn’ and start.
+* The state machine is synchronized with ‘sclk’ and triggered with input signals ‘resetn’ and 'start'.
 
 | <img src="./Images/Master State Machine.JPG"> |
 |:--:| 
