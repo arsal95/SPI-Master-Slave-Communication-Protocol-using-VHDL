@@ -127,6 +127,6 @@ Once all the bits are received the ‘master_done’ and ‘slave_done’ signal
 We have implemented a logic in VHDL to send data using the SPI protocol. Both Master and Slave can send and receive data from one another.
 * On the start signal both Master and slave start sending out the data in serial form with MSB sent out first.
 * After bit-by-bit transmission of the data in synchronous with the clock, both master and slave will exchange data.
-* At the end of transmission, the data sent from the Master is received by the slave and vice-versa, which is verified in the output waveform Fig.5. The state of the master and slave change to idle and the done signal will go to high as shown in Fig 7, indicating transmission is completed.
+* At the end of transmission, the data sent from the Master is received by the slave and vice-versa, which is verified in the output waveform Fig 5. The state of the master and slave change to idle and the done signal will go to high as shown in Fig 7, indicating transmission is completed.
 
 Thank you for visiting my account. :slightly_smiling_face: 
