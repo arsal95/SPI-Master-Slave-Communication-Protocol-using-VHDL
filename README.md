@@ -109,7 +109,7 @@ To perform transmission to slave ‘scsq’ chip select should be ‘0’. As so
 
 Similarly in slave once the ‘slscq’ goes to ‘0’on the next rising edge of ‘bclk’, done_slave goes to ‘0’ and the transition of state starts ‘csstart’. And the data to be sent to the master will in ‘slsdo’.
 
-All the bits received by the Master and slave are left-shifted because MSB will be sent out first as shown in Fig 6.
+All the bits received by the Master and slave are left-shifted because MSB will be sent out first as shown in Fig 7.
 
 Once all the bits are received the ‘master_done’ and ‘slave_done’ signals go to ‘1’ and ‘scsq’ and ‘slcsq’ also go to ‘1’ indicating the end of the transmission and reception as shown in Fig 7. The state of the Master and Slave changes to ‘sidle’ and ‘idle’ respectively.
 
