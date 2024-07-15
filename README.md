@@ -4,7 +4,7 @@
 VHDL program to perform a Serial data transmission and reception using SPI master and slave. Data sent from the master should be received by the slave and vice-versa. The program logic has to be verified by simulation.
 
 ## Introduction:
-SPI (Serial peripheral interface) is a synchronous serial communication interface specification used for short-distance communication. Here single master and slave is used. SPI protocol is full duplex, which means the Mater can send data to the slave at the same time slave can also send data to the master. A standard SPI Master Communication Protocol bus consists of 4 signals, Master Out Slave In (MOSI), Master In Slave Out (MISO), the Clock (SCLK), and Chip Select (CSq) or Slave Select (SS).
+SPI (Serial peripheral interface) is a synchronous serial communication interface specification used for short-distance communication. Here single master and slave is used. SPI protocol is full duplex, which means the master can send data to the slave at the same time slave can also send data to the master. A standard SPI Master Communication Protocol bus consists of 4 signals, Master Out Slave In (MOSI), Master In Slave Out (MISO), the Clock (SCLK), and Chip Select (CSq) or Slave Select (SS).
 
 | <img src="./Images/SPI Bus.JPG"> |
 |:--:| 
