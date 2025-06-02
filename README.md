@@ -30,7 +30,7 @@ The state diagrams for Master and Slave are given below.
 
 | <img src="./Images/Slave State Machine.JPG"> |
 |:--:| 
-| *Fig 4: SPI Master State Machine* |
+| *Fig 4: SPI Slave State Machine* |
 
 ## VHDL Code Explanation:
 
